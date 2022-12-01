@@ -91,7 +91,7 @@ plt.plot(his.history["val_accuracy"])
 plt.title("Model accuracy")
 plt.xlabel("Epoch")
 plt.ylabel("Accuracy")
-plt.legend(["Train", "Value"], loc="upper left")
+plt.legend(["Train", "Validation_acc"], loc="upper left")
 plt.show()
 
 # Plot loss
@@ -100,7 +100,7 @@ plt.plot(his.history["val_loss"])
 plt.title("Model loss")
 plt.xlabel("Epoch")
 plt.ylabel("Loss")
-plt.legend(["Train", "Value"], loc="upper right")
+plt.legend(["Train", "Validation_loss"], loc="upper right")
 plt.show()
 
 # save trained model
