@@ -8,12 +8,6 @@ from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Dense, Conv2D, MaxPool2D, Flatten, Dropout
 from keras.callbacks import EarlyStopping, ModelCheckpoint
-# from tensorflow.python.client import device_lib
-# device_lib.list_local_devices()
-# import tensorflow as tf
-# print(len(tf.config.list_physical_devices('GPU')))
-# from keras import backend as K
-# K.tensorflow_backend._get_available_gpus()
 
 print("Handwritten digits recognition\n")
 
@@ -72,23 +66,23 @@ model.compile(optimizer="adam",
               loss=keras.losses.categorical_crossentropy, metrics=["accuracy"])
 
 
-# # earlystopping
-# es = EarlyStopping(monitor="val_accuracy",
-#                    min_delta=0.01, patience=4, verbose=1)
+# earlystopping
+es = EarlyStopping(monitor="val_accuracy",
+                   min_delta=0.01, patience=19, verbose=1)
 
 
-# # model check point
-# mc = ModelCheckpoint("bestmodel.h5", monitor="val_accuracy",
-#                      verbose=1, save_best_only=True)
+# model check point
+mc = ModelCheckpoint("bestmodel.h5", monitor="val_accuracy",
+                     verbose=1, save_best_only=True)
 
 
-# # callbacks
-# cb = [es, mc]
+# callbacks
+cb = [es, mc]
 
 
 print("Training model")
 # train the model
-his = model.fit(x_train, y_train, epochs=2,
+his = model.fit(x_train, y_train, epochs=20,
                 validation_split=0.3)
 
 # Plot accuracy
@@ -110,7 +104,7 @@ plt.legend(["Train", "Value"], loc="upper right")
 plt.show()
 
 # save trained model
-# model.save("bestmodel.h5")
+model.save("bestmodel.h5")
 
 # get model
 bestmodel = keras.models.load_model("bestmodel.h5")
